@@ -12,11 +12,6 @@
         "dest": "server/server.js"
       }
     ],
-    "functions": {
-      "server/server.js": {
-        "runtime": "nodejs22.x"
-      }
-    },
     "env": {
       "NODE_ENV": "production"
     }
