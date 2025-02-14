@@ -16,8 +16,8 @@
     "commands": {
       "fix-grammar": {
         "suggested_key": {
-          "default": "Ctrl+G",
-          "mac": "Command+G"
+          "default": "Alt+G",
+          "mac": "Option+G"
         },
         "description": "Fix grammar in selected text"
       }

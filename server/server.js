@@ -7,7 +7,11 @@ import { PromptTemplate } from "@langchain/core/prompts";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: ['chrome-extension://*', 'http://localhost:*'],
+    methods: ['POST'],
+    credentials: true
+}));
 app.use(express.json());
 
 const model=new ChatMistralAI({
@@ -40,6 +44,10 @@ app.post('/fix-grammer', async(req, res) => {
     }
 });
 
+app.get('/health', (req, res) => {
+    res.json({ status: 'ok' });
+});
+  
 app.listen(3000, ()=>{
     console.log(`server running on ${3000}`);
 });
