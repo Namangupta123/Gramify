@@ -31,7 +31,7 @@ try {
 
     app.post('/fix-grammer', async (req, res) => {
         try {
-            const { text } = req.body.text;
+            const  text  = req.body.text;
             if (!text) {
                 return res.status(400).json({ error: 'No text Provided' });
             }
