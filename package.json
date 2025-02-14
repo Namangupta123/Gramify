@@ -1,9 +1,33 @@
 {
+  "name": "grammar-fixer",
+  "version": "1.0.0",
+  "description": "A grammar correction API using LangChain's MistralAI.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js"
+  },
   "dependencies": {
     "@langchain/core": "^0.3.40",
     "@langchain/mistralai": "^0.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2"
-  }
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=22.x"
+  },
+  "keywords": [
+    "express",
+    "langchain",
+    "mistralai",
+    "grammar-correction",
+    "vercel"
+  ],
+  "author": "Naman Gupta",
+  "license": "MIT"
 }
