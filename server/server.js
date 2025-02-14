@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-    origin: ['chrome-extension://*', 'http://localhost:*'],
+    origin: ['chrome-extension://*', 'http://localhost:*', '*'],
     methods: ['POST'],
     credentials: true
 }));
@@ -17,7 +17,8 @@ app.use(express.json());
 try {
     const model = new ChatMistralAI({
         apiKey: process.env.MISTRAL_API_KEY,
-        model: "mistral-large-latest"
+        model: "mistral-large-latest",
+        temperature: 0.7
     });
 
     const template = `You are a professional grammar correction assistant. 
@@ -38,7 +39,8 @@ try {
             const response = await model.invoke(formattedPrompt);
             res.json({ correctedText: response.content });
 
-        } catch (error) {
+        } 
+        catch (error) {
             console.error('Error:', error);
             res.status(500).json({ error: 'Internal server error' });
         }
@@ -51,6 +53,7 @@ try {
     app.listen(3000, () => {
         console.log(`server running on ${3000}`);
     });
-} catch (error) {
+} 
+catch (error) {
     console.error('Error starting server:', error);
 }
