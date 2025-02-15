@@ -1,5 +1,5 @@
 {
-    "manifest_version": 1,
+    "manifest_version": 3,
     "name": "Gramify",
     "version": "1.0.0",
     "description": "Fix grammar mistakes in selected text using MistralAI",
@@ -16,8 +16,8 @@
     "commands": {
       "fix-grammar": {
         "suggested_key": {
-          "default": "Alt+G",
-          "mac": "Option+G"
+          "default": "Ctrl+K",
+          "mac": "Command+K"
         },
         "description": "Fix grammar in selected text"
       }
@@ -25,16 +25,21 @@
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
-        "js": ["src/content.js"],
-        "css": ["src/index.css"]
+        "js": ["./src/content.js"],
+        "css": ["./src/index.css"]
       }
     ],
     "action": {
       "default_popup": "index.html",
       "default_icon": {
-        "16": "icons/icon16.png",
-        "48": "icons/icon48.png",
-        "128": "icons/icon128.png"
+        "16": "icons/icon_main.png",
+        "48": "icons/icon_main.png",
+        "128": "icons/icon_main.png"
       }
+    },
+    "icons":{
+      "16":"icons/icon_main.png",
+      "48":"icons/icon_main.png",
+      "128":"icons/icon_main.png"
     }
   }
