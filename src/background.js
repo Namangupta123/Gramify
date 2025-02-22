@@ -1,6 +1,6 @@
 import {getSelectedText, injectCorrectedText} from './utils.js';
 
-const API_URL='https://gramify-one.vercel.app/fix-grammer';
+const API_URL='https://gramify-server.vercel.app/fix-grammer';
 
 chrome.commands.onCommand.addListener(async(command)=>{
     if(command === 'fix-grammar'){

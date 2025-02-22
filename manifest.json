@@ -25,12 +25,11 @@
     "content_scripts": [
       {
         "matches": ["<all_urls>"],
-        "js": ["./src/content.js"],
-        "css": ["./src/index.css"]
+        "js": ["./src/content.js"]
       }
     ],
     "action": {
-      "default_popup": "index.html",
+      "default_popup": "Grami.html",
       "default_icon": {
         "16": "icons/icon16.png",
         "48": "icons/icon48.png",

@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    width: 300px;
+    padding: 16px;
+  }
+  
+  .container {
+    background-color: white;
+  }
+  
+  .card {
+    padding: 16px;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #1f2937;
+  }
+  
+  .text {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.5;
+  }
+  
+  .text-bold {
+    font-weight: bold;
+  }
