@@ -10,17 +10,18 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       const start = activeElement.selectionStart;
       const end = activeElement.selectionEnd;
       const originalText = activeElement.value;
-      
-      activeElement.value = 
-        originalText.substring(0, start) + 
-        request.correctedText + 
+
+      activeElement.value =
+        originalText.substring(0, start) +
+        request.correctedText +
         originalText.substring(end);
-      
+
       activeElement.selectionStart = start;
       activeElement.selectionEnd = start + request.correctedText.length;
-      
+
       activeElement.dispatchEvent(new Event('input', { bubbles: true }));
-    } else {
+    }
+    else {
       const selection = window.getSelection();
       if (!selection || !selection.rangeCount) return;
 
