@@ -1,29 +1,34 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-    if (request.action === 'getSelectedText') {
-        const selectedText = window.getSelection()?.toString() || '';
-        sendResponse({ text: selectedText });
+  if (request.action === 'getSelectedText') {
+    const selectedText = window.getSelection()?.toString() || '';
+    sendResponse({ text: selectedText });
+  }
+
+  if (request.action === 'injectCorrectedText') {
+    const activeElement = document.activeElement;
+    if (activeElement && (activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA')) {
+      const start = activeElement.selectionStart;
+      const end = activeElement.selectionEnd;
+      const originalText = activeElement.value;
+      
+      activeElement.value = 
+        originalText.substring(0, start) + 
+        request.correctedText + 
+        originalText.substring(end);
+      
+      activeElement.selectionStart = start;
+      activeElement.selectionEnd = start + request.correctedText.length;
+      
+      activeElement.dispatchEvent(new Event('input', { bubbles: true }));
+    } else {
+      const selection = window.getSelection();
+      if (!selection || !selection.rangeCount) return;
+
+      const range = selection.getRangeAt(0);
+      range.deleteContents();
+      range.insertNode(document.createTextNode(request.correctedText));
     }
 
-    if (request.action === 'injectCorrectedText') {
-        const selection = window.getSelection();
-        if (!selection) return;
-
-        const range = selection.getRangeAt(0);
-        range.deleteContents();
-
-        const correctedSpan = document.createElement('span');
-        correctedSpan.className = 'gramify-correction';
-        correctedSpan.textContent = request.correctedText;
-
-        correctedSpan.style.backgroundColor = '#e2f5e2';
-        correctedSpan.style.transition = 'background-color 0.3s ease';
-
-        range.insertNode(correctedSpan);
-
-        setTimeout(() => {
-            correctedSpan.style.backgroundColor = 'transparent';
-        }, 2000);
-
-        sendResponse({ success: true });
-    }
+    sendResponse({ success: true });
+  }
 });
