@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Gramify",
-    "version": "1.0.0",
+    "version": "1.1.1",
     "description": "Fix grammar mistakes in selected text using MistralAI",
     "permissions": [
       "activeTab",
